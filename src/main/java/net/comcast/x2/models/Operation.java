@@ -22,10 +22,9 @@ public class Operation
     {
     }
 
-    public Operation(String opsname, List<Section> sections)
+    public Operation(String opsname)
     {
         this.opsname = opsname;
-        this.sections = sections;
     }
 
     public long getOpsid()

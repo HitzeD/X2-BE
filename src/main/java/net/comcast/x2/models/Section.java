@@ -1,5 +1,7 @@
 package net.comcast.x2.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +29,10 @@ public class Section
     {
     }
 
-    public Section(String sectionname, List<Doc> docs)
+    public Section(String sectionname, Operation ops)
     {
+        this.operation = ops;
         this.sectionname = sectionname;
-        this.docs = docs;
     }
 
     public long getSectionid()
