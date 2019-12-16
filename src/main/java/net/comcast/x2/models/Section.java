@@ -1,7 +1,5 @@
 package net.comcast.x2.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +15,8 @@ public class Section
     private String sectionname;
 
     @ManyToOne
-    @JoinColumn(name = "opsid",
-            nullable = false)
+    @JoinColumn(name = "opsid")
+    // nullable = false)
     private Operation operation;
 
     @OneToMany(mappedBy = "section",
@@ -33,6 +31,13 @@ public class Section
     {
         this.operation = ops;
         this.sectionname = sectionname;
+    }
+
+    public Section(String sectionname, Operation ops, List<Doc> docs)
+    {
+        this.operation = ops;
+        this.sectionname = sectionname;
+        this.docs = docs;
     }
 
     public long getSectionid()

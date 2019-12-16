@@ -1,6 +1,5 @@
 package net.comcast.x2.service;
 
-import net.comcast.x2.models.Doc;
 import net.comcast.x2.models.Operation;
 import net.comcast.x2.models.Section;
 import net.comcast.x2.repository.OperationRepository;
@@ -44,7 +43,19 @@ public class OperationServiceImpl implements OperationService
 
         newOps.setOpsname(ops.getOpsname());
 
+        for (Section sec : ops.getSections())
+        {
+            newOps.getSections()
+                    .add(new Section(sec.getSectionname(), newOps, sec.getDocs()));
+        }
+
         return opsRepo.save(newOps);
+    }
+
+    @Override
+    public Operation addSection(Operation ops, Section section)
+    {
+        return null;
     }
 
     @Override

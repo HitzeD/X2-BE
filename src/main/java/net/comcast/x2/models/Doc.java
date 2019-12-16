@@ -10,6 +10,7 @@ public class Doc
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long docid;
 
+    @Column(nullable = false)
     private String docname;
 
     private String docurl;
@@ -23,10 +24,11 @@ public class Doc
     {
     }
 
-    public Doc(String docname, String docurl)
+    public Doc(String docname, String docurl, Section section)
     {
         this.docname = docname;
         this.docurl = docurl;
+        this.section = section;
     }
 
     public long getDocid()
@@ -57,5 +59,15 @@ public class Doc
     public void setDocurl(String docurl)
     {
         this.docurl = docurl;
+    }
+
+    public Section getSection()
+    {
+        return section;
+    }
+
+    public void setSection(Section section)
+    {
+        this.section = section;
     }
 }
